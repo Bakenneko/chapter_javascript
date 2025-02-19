@@ -31,20 +31,55 @@ const users = [
 // });
 // console.log(sortTwo);
 
-let sortByName = users.sort((a, b) => {
-    if (a.name > b.name) {
-        return 1;
+// let sortByName = users.sort((a, b) => {
+//     if (a.name > b.name) {
+//         return 1;
+//     }
+//     if (a.name < b.name) {
+//         return -1;
+//     }
+//     if (a.name === b.name) {
+//         return 0;
+//     }
+// });
+//
+// console.log(sortByName);
+
+// let reduce = users.reduce((acc, user) => {
+//     if (user.status) {
+//         acc.statT.push(user);
+//     } else {
+//         acc.statF.push(user);
+//     }
+//     return acc;
+//
+// }, {statT: [], statF: []});
+//
+// console.log(reduce);
+
+// function calc(a,b, callback) {
+//     return callback (a,b);
+// }
+//
+// console.log(calc(10,20, (a, b) => a + b ));
+// console.log(calc(10,20, (a, b) => a - b ));
+// console.log(calc(10,20, (a, b) => a / b ));
+// console.log(calc(10,20, (a, b) => a * b ));
+
+function filter(arr, callback) {
+    let mass = [];
+    for (const item of arr) {
+        if (callback(item)) {
+            mass[mass.length] = item;
+        }
     }
-    if (a.name < b.name) {
-        return -1;
-    }
-    if (a.name === b.name) {
-        return 0;
-    }
-});
+    return mass;
+}
 
-console.log(sortByName);
+console.log(filter([1,2,3,4,5,6,7,8,9,10], function (item){
+    return item % 2 === 0;
+}));
 
-
-
-
+console.log(filter(users, function (user) {
+    return user.age < 30;
+}))
